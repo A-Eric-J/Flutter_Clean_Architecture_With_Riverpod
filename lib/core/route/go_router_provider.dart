@@ -1,0 +1,23 @@
+import 'package:flutter_clean_architecture_with_riverpod/core/route/route_name.dart';
+import 'package:flutter_clean_architecture_with_riverpod/features/login/presentation/login_screen.dart';
+import 'package:flutter_clean_architecture_with_riverpod/features/signup/presentation/signup_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+final goRouterProvider = Provider<GoRouter>((ref) {
+
+  return GoRouter(
+    initialLocation: '/login',
+    routes: [
+      GoRoute(
+          path: '/login',
+          name: loginRoute,
+          builder: (context, state) => const LoginScreen(),),
+      GoRoute(
+        path: '/signup',
+        name: singUpRoute,
+        builder: (context, state) => const SignUpScreen(),
+      ),
+    ],
+  );
+});
