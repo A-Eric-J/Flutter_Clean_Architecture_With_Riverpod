@@ -14,9 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$RefreshTokenResponse {
-  @JsonKey(name: "status")
   String get status;
-  @JsonKey(name: "data")
   Data get data;
 
   /// Create a copy of RefreshTokenResponse
@@ -55,9 +53,7 @@ abstract mixin class $RefreshTokenResponseCopyWith<$Res> {
           $Res Function(RefreshTokenResponse) _then) =
       _$RefreshTokenResponseCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: "status") String status,
-      @JsonKey(name: "data") Data data});
+  $Res call({String status, Data data});
 
   $DataCopyWith<$Res> get data;
 }
@@ -192,9 +188,7 @@ extension RefreshTokenResponsePatterns on RefreshTokenResponse {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(@JsonKey(name: "status") String status,
-            @JsonKey(name: "data") Data data)?
-        $default, {
+    TResult Function(String status, Data data)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -221,9 +215,7 @@ extension RefreshTokenResponsePatterns on RefreshTokenResponse {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(@JsonKey(name: "status") String status,
-            @JsonKey(name: "data") Data data)
-        $default,
+    TResult Function(String status, Data data) $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -246,9 +238,7 @@ extension RefreshTokenResponsePatterns on RefreshTokenResponse {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(@JsonKey(name: "status") String status,
-            @JsonKey(name: "data") Data data)?
-        $default,
+    TResult? Function(String status, Data data)? $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -263,17 +253,13 @@ extension RefreshTokenResponsePatterns on RefreshTokenResponse {
 /// @nodoc
 @JsonSerializable()
 class _RefreshTokenResponse implements RefreshTokenResponse {
-  const _RefreshTokenResponse(
-      {@JsonKey(name: "status") required this.status,
-      @JsonKey(name: "data") required this.data});
+  const _RefreshTokenResponse({required this.status, required this.data});
   factory _RefreshTokenResponse.fromJson(Map<String, dynamic> json) =>
       _$RefreshTokenResponseFromJson(json);
 
   @override
-  @JsonKey(name: "status")
   final String status;
   @override
-  @JsonKey(name: "data")
   final Data data;
 
   /// Create a copy of RefreshTokenResponse
@@ -319,9 +305,7 @@ abstract mixin class _$RefreshTokenResponseCopyWith<$Res>
       __$RefreshTokenResponseCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "status") String status,
-      @JsonKey(name: "data") Data data});
+  $Res call({String status, Data data});
 
   @override
   $DataCopyWith<$Res> get data;
@@ -368,9 +352,7 @@ class __$RefreshTokenResponseCopyWithImpl<$Res>
 
 /// @nodoc
 mixin _$Data {
-  @JsonKey(name: "accessToken")
   String get accessToken;
-  @JsonKey(name: "refreshToken")
   String get refreshToken;
 
   /// Create a copy of Data
@@ -409,9 +391,7 @@ abstract mixin class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) _then) =
       _$DataCopyWithImpl;
   @useResult
-  $Res call(
-      {@JsonKey(name: "accessToken") String accessToken,
-      @JsonKey(name: "refreshToken") String refreshToken});
+  $Res call({String accessToken, String refreshToken});
 }
 
 /// @nodoc
@@ -533,9 +513,7 @@ extension DataPatterns on Data {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(@JsonKey(name: "accessToken") String accessToken,
-            @JsonKey(name: "refreshToken") String refreshToken)?
-        $default, {
+    TResult Function(String accessToken, String refreshToken)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -562,9 +540,7 @@ extension DataPatterns on Data {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(@JsonKey(name: "accessToken") String accessToken,
-            @JsonKey(name: "refreshToken") String refreshToken)
-        $default,
+    TResult Function(String accessToken, String refreshToken) $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -587,9 +563,7 @@ extension DataPatterns on Data {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(@JsonKey(name: "accessToken") String accessToken,
-            @JsonKey(name: "refreshToken") String refreshToken)?
-        $default,
+    TResult? Function(String accessToken, String refreshToken)? $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -604,16 +578,12 @@ extension DataPatterns on Data {
 /// @nodoc
 @JsonSerializable()
 class _Data implements Data {
-  const _Data(
-      {@JsonKey(name: "accessToken") required this.accessToken,
-      @JsonKey(name: "refreshToken") required this.refreshToken});
+  const _Data({required this.accessToken, required this.refreshToken});
   factory _Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
   @override
-  @JsonKey(name: "accessToken")
   final String accessToken;
   @override
-  @JsonKey(name: "refreshToken")
   final String refreshToken;
 
   /// Create a copy of Data
@@ -658,9 +628,7 @@ abstract mixin class _$DataCopyWith<$Res> implements $DataCopyWith<$Res> {
       __$DataCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: "accessToken") String accessToken,
-      @JsonKey(name: "refreshToken") String refreshToken});
+  $Res call({String accessToken, String refreshToken});
 }
 
 /// @nodoc

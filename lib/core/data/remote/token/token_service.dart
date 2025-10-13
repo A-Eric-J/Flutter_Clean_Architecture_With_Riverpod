@@ -4,6 +4,7 @@ import 'package:flutter_clean_architecture_with_riverpod/common/http_status/stat
 import 'package:flutter_clean_architecture_with_riverpod/core/data/local/secure_storage/isecure_storage.dart';
 import 'package:flutter_clean_architecture_with_riverpod/core/data/local/secure_storage/secure_storage.dart';
 import 'package:flutter_clean_architecture_with_riverpod/core/data/local/secure_storage/secure_storage_const.dart';
+import 'package:flutter_clean_architecture_with_riverpod/core/data/remote/endpoint.dart';
 import 'package:flutter_clean_architecture_with_riverpod/core/data/remote/token/itoken_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,7 +38,7 @@ class TokenService implements ITokenService {
   @override
   Future<RefreshTokenResponse> refreshToken(String? refreshToken) async {
     final response = await _dio.post<Map<String, dynamic>>(
-        '/api/v1/auth/refresh-token',
+        refreshTokenEndPoint,
         data: {"refreshToken": refreshToken});
 
     if (response.statusCode == success) {
