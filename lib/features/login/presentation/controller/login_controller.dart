@@ -54,4 +54,8 @@ class LoginController extends _$LoginController {
 
   }
 
+  void setFormData(Map<String, dynamic> formData) {
+    state = state.copyWith(loginForm: formData);
+  }
+
 }
