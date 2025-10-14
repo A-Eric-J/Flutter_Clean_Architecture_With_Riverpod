@@ -6,6 +6,7 @@ import 'package:flutter_clean_architecture_with_riverpod/features/login/presenta
 import 'package:flutter_clean_architecture_with_riverpod/features/login/presentation/ui/widget/login_button.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/login/presentation/ui/widget/login_with.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 
 class LoginForm extends ConsumerStatefulWidget {
@@ -37,6 +38,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    _listener();
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -105,6 +107,27 @@ class _LoginFormState extends ConsumerState<LoginForm> {
         ),
       ),
     );
+  }
+
+  void _listener() {
+    // listen for error
+    ref.listen(loginControllerProvider.select((value) => value.error), (_, next) {
+      if (next != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 5),
+            backgroundColor: Colors.red,
+            content: Text(next),
+          ),
+        );
+      }
+    });
+    // listen for success
+    ref.listen(loginControllerProvider.select((value) => value.isLoginSuccess), (_, next) {
+      if (next) {
+        context.go('/home');
+      }
+    });
   }
 
   void _login() {
