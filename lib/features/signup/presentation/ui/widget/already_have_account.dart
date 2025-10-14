@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_architecture_with_riverpod/common/extention/string_hardcoded.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AlreadyHaveAccount extends ConsumerWidget {
@@ -10,17 +11,18 @@ class AlreadyHaveAccount extends ConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
-          'Already have an account?',
-          style: TextStyle(
+        Text(
+          'Already have an account?'.hardcoded,
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w500,
           ),
         ),
         TextButton(
           onPressed: onPressed,
-          child: const Text("LogIn",
-              style: TextStyle(
+          child: Text(
+              "LogIn".hardcoded,
+              style: const TextStyle(
                 color: Colors.blue,
                 fontWeight: FontWeight.w700,
               )),

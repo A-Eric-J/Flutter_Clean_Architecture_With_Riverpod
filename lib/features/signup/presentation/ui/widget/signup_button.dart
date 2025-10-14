@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_architecture_with_riverpod/common/extention/string_hardcoded.dart';
+import 'package:flutter_clean_architecture_with_riverpod/common/style/dimens.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/signup/presentation/controller/sign_up_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,18 +11,19 @@ class SignUpButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isLoading = ref.watch(signUpControllerProvider.select((value) => value.isLoading));
+    final isLoading =
+    ref.watch(signUpControllerProvider.select((value) => value.isLoading));
     return SizedBox(
       width: double.infinity,
       child: FilledButton.icon(
         style: FilledButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8)
-          ),
-
+          padding: const EdgeInsets.symmetric(vertical: kMedium),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(kSmall)),
         ),
-        label: const Text('Sign Up', style: TextStyle(fontSize: 18),),
+        label: Text(
+          'Sign Up'.hardcoded,
+          style: const TextStyle(fontSize: kMedium),
+        ),
         icon: isLoading
             ? const CircularProgressIndicator.adaptive()
             : const Icon(Icons.person_add),
