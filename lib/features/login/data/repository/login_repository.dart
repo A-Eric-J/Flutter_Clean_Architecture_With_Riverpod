@@ -10,7 +10,7 @@ import 'package:flutter_clean_architecture_with_riverpod/features/login/data/sou
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-final loginRepositoryProvider = Provider<ILoginRepository>((ref) {
+final loginRepositoryProvider = Provider.autoDispose<ILoginRepository>((ref) {
   final loginApi = ref.watch(loginApiProvider);
   final tokenStorage = ref.watch(tokenStorageProvider);
 

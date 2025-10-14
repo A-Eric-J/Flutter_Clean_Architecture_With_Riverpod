@@ -6,7 +6,7 @@ import 'package:flutter_clean_architecture_with_riverpod/features/login/data/sou
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-final tokenStorageProvider = Provider<ITokenStorage>((ref) {
+final tokenStorageProvider = Provider.autoDispose<ITokenStorage>((ref) {
   final secureStorage = ref.watch(secureStorageProvider);
 
   return TokenStorage(secureStorage);

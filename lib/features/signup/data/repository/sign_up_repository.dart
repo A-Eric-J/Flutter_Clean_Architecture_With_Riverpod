@@ -11,6 +11,7 @@ final signUpRepositoryProvider = Provider.autoDispose<ISignUpRepository>((ref) {
   return SignUpRepository(signUpApi);
 });
 
+
 final class SignUpRepository implements ISignUpRepository {
   final SignUpApi _signUpApi;
 
@@ -18,12 +19,16 @@ final class SignUpRepository implements ISignUpRepository {
 
   @override
   Future<SignUpResponse> signUp(SignUpRequest data) async {
+
     try {
+
       final response = await _signUpApi.signUp(data);
 
       return response;
+
     } on DioException catch (_) {
       rethrow;
     }
+
   }
 }

@@ -9,7 +9,7 @@ import 'package:flutter_clean_architecture_with_riverpod/features/signup/domain/
 import 'package:flutter_clean_architecture_with_riverpod/features/signup/domain/model/sign_up_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final signUpServiceProvider = Provider<ISignUpService>((ref) {
+final signUpServiceProvider = Provider.autoDispose<ISignUpService>((ref) {
   final signUpRepository = ref.watch(signUpRepositoryProvider);
 
   return SignUpService(signUpRepository);

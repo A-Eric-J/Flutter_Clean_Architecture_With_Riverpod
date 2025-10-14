@@ -11,7 +11,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'login_api.g.dart';
 
-final loginApiProvider = Provider<LoginApi>((ref) {
+final loginApiProvider = Provider.autoDispose<LoginApi>((ref) {
   final dio = ref.watch(networkServiceProvider);
 
   return LoginApi(dio);
