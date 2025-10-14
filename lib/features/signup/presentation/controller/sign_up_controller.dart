@@ -50,4 +50,10 @@ class SignUpController extends _$SignUpController {
 
   }
 
+  void setFormData(Map<String, dynamic> formData) {
+    state = state.copyWith(
+      signUpform: formData,
+    );
+  }
+
 }
