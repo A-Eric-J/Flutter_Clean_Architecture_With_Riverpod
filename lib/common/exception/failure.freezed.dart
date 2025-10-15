@@ -149,8 +149,6 @@ extension FailurePatterns on Failure {
     switch (_that) {
       case _Failure():
         return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
     }
   }
 
@@ -232,8 +230,6 @@ extension FailurePatterns on Failure {
       case _Failure():
         return $default(
             _that.message, _that.statusCode, _that.exception, _that.stackTrace);
-      case _:
-        throw StateError('Unexpected subclass');
     }
   }
 

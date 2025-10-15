@@ -33,11 +33,21 @@ class SignUpController extends _$SignUpController {
       );
 
       final result = await ref.read(signUpServiceProvider).signUp(formData);
-
-      state = state.copyWith(
-        isLoading: false,
-        isSignUpSuccess: result.isSignUpSuccess,
-        signUpModel: result,
+      result.when(
+              (success) {
+            state = state.copyWith(
+              isLoading: false,
+              isSignUpSuccess: success.isSignUpSuccess,
+              signUpModel: success,
+            );
+          },
+              (failure) {
+            state = state.copyWith(
+              isLoading: false,
+              isSignUpSuccess: null,
+              error: failure.message,
+            );
+          }
       );
 
     } catch (e) {
@@ -49,7 +59,6 @@ class SignUpController extends _$SignUpController {
     }
 
   }
-
   void setFormData(Map<String, dynamic> formData) {
     state = state.copyWith(
       signUpform: formData,

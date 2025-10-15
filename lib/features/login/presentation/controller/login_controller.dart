@@ -44,14 +44,23 @@ class LoginController extends _$LoginController {
       );
 
       // call login api
-      final response = await ref.read(loginServiceProvider).login(loginRequest);
+      final result = await ref.read(loginServiceProvider).login(loginRequest);
+      result.when(
+              (success) {
+            // update the auth state
+            ref.invalidate(authStateProvider);
+            ref.read(authStateProvider.notifier).setAuthState(success);
 
-      // update the auth state
-      ref.invalidate(authStateProvider);
-      ref.read(authStateProvider.notifier).setAuthState(response);
+            // update the state - isLoading = false and isLoginSuccess = response
+            state = state.copyWith(isLoading: false, isLoginSuccess: success);
 
-      // update the state - isLoading = false and isLoginSuccess = response
-      state = state.copyWith(isLoading: false, isLoginSuccess: response);
+          },
+              (failure) {
+            state = state.copyWith(isLoading: false, error: failure.message);
+          }
+      );
+
+
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
 
