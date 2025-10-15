@@ -37,6 +37,12 @@ dependencies:
 #  # https://pub.dev/packages/multiple_result
   multiple_result: ^5.2.0
 
+  # For Local Storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  flutter_screenutil: ^5.9.3
+
 
 dev_dependencies:
   flutter_test:

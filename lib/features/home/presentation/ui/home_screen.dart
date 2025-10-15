@@ -19,8 +19,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBar: AppBar(
         title: Text('Home'.hardcoded),
       ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Home Screen'.hardcoded),
             ElevatedButton(

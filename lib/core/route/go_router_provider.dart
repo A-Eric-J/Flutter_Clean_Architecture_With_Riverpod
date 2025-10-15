@@ -16,13 +16,15 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
 
       final isGoingToLogin = state.matchedLocation == '/login';
-
       if (authState) {
+
         if (isGoingToLogin) {
+
           return '/home';
         }
 
       }
+
 
       return null;
     },

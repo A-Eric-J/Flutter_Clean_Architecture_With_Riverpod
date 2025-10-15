@@ -94,6 +94,11 @@ class _LoginFormState extends ConsumerState<LoginForm> {
               const SizedBox(height: kExtraLarge),
 
               LoginButton(onPressed: _login),
+              const SizedBox(height: kLarge),
+
+              ElevatedButton(onPressed: (){
+                context.go('/home');
+              }, child: Text('Home Page')),
 
               const SizedBox(height: kLarge),
 
@@ -124,9 +129,11 @@ class _LoginFormState extends ConsumerState<LoginForm> {
     });
     // listen for success
     ref.listen(loginControllerProvider.select((value) => value.isLoginSuccess), (_, next) {
+
       if (next) {
         context.go('/home');
       }
+
     });
   }
 

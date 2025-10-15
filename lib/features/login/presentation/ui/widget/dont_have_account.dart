@@ -13,10 +13,6 @@ class DontHaveAccount extends ConsumerWidget {
       children: [
         Text(
           "Don't have an account?".hardcoded,
-          style: const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w500,
-          ),
         ),
         TextButton(
           onPressed: () {
@@ -25,10 +21,6 @@ class DontHaveAccount extends ConsumerWidget {
           },
           child: Text(
             "Sign up".hardcoded,
-            style: const TextStyle(
-              color: Colors.blue,
-              fontWeight: FontWeight.w700,
-            ),
           ),
         ),
       ],

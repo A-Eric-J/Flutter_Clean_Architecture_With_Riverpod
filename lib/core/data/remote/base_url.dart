@@ -1,0 +1,1 @@
+var baseURL = 'https://jsonplaceholder.typicode.com';

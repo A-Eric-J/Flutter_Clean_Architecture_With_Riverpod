@@ -13,19 +13,11 @@ class AlreadyHaveAccount extends ConsumerWidget {
       children: [
         Text(
           'Already have an account?'.hardcoded,
-          style: const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w500,
-          ),
         ),
         TextButton(
           onPressed: onPressed,
           child: Text(
             "LogIn".hardcoded,
-            style: const TextStyle(
-              color: Colors.blue,
-              fontWeight: FontWeight.w700,
-            ),
           ),
         ),
       ],
