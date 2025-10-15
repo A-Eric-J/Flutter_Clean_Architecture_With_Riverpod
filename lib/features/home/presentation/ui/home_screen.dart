@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture_with_riverpod/common/extention/string_hardcoded.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -18,10 +19,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBar: AppBar(
         title: Text('Home'.hardcoded),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Home Screen'),
+            Text('Home Screen'.hardcoded),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to setting screen
+                context.push('/home/setting');
+              },
+              child: Text('Setting'.hardcoded),
+            ),
           ],
         ),
       ),

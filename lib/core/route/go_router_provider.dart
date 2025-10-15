@@ -2,19 +2,26 @@ import 'package:flutter_clean_architecture_with_riverpod/core/provider/auth_stat
 import 'package:flutter_clean_architecture_with_riverpod/core/route/route_name.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/home/presentation/ui/home_screen.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/login/presentation/login_screen.dart';
+import 'package:flutter_clean_architecture_with_riverpod/features/setting/presentation/ui/setting_screen.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/signup/presentation/signup_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
 
+  final authState = ref.watch(authStateProvider);
+
   return GoRouter(
     initialLocation: '/login',
     redirect: (context, state) {
-      final authState = ref.watch(authStateProvider);
+
+      final isGoingToLogin = state.matchedLocation == '/login';
 
       if (authState) {
-        return '/home';
+        if (isGoingToLogin) {
+          return '/home';
+        }
+
       }
 
       return null;
@@ -30,9 +37,16 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const SignUpScreen(),
       ),
       GoRoute(
-        path: '/home',
-        name: homeRoute,
-        builder: (context, state) => const HomeScreen(),
+          path: '/home',
+          name: homeRoute,
+          builder: (context, state) => const HomeScreen(),
+          routes: [
+            GoRoute(
+              path: 'setting',
+              name: settingRoute,
+              builder: (context, state) => const SettingScreen(),
+            ),
+          ]
       ),
     ],
   );

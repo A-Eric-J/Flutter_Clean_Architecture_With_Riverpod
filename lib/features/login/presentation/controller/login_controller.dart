@@ -1,3 +1,4 @@
+import 'package:flutter_clean_architecture_with_riverpod/core/provider/auth_state_provider.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/login/data/dto/request/login_request.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/login/presentation/state/login_state.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/login/application/login_service.dart';
@@ -10,6 +11,7 @@ part 'login_controller.g.dart';
 // 2. Annotate your class with @riverpod
 @riverpod
 class LoginController extends _$LoginController {
+
   @override
   LoginState build() {
     return LoginState();
@@ -44,14 +46,16 @@ class LoginController extends _$LoginController {
       // call login api
       final response = await ref.read(loginServiceProvider).login(loginRequest);
 
+      // update the auth state
+      ref.invalidate(authStateProvider);
+      ref.read(authStateProvider.notifier).setAuthState(response);
+
       // update the state - isLoading = false and isLoginSuccess = response
       state = state.copyWith(isLoading: false, isLoginSuccess: response);
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
 
     }
-
-
   }
 
   void setFormData(Map<String, dynamic> formData) {
