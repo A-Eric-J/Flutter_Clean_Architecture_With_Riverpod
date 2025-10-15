@@ -1,3 +1,4 @@
+import 'package:flutter_clean_architecture_with_riverpod/core/provider/auth_state_provider.dart';
 import 'package:flutter_clean_architecture_with_riverpod/core/route/route_name.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/home/presentation/ui/home_screen.dart';
 import 'package:flutter_clean_architecture_with_riverpod/features/login/presentation/login_screen.dart';
@@ -9,6 +10,15 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
   return GoRouter(
     initialLocation: '/login',
+    redirect: (context, state) {
+      final authState = ref.watch(authStateProvider);
+
+      if (authState) {
+        return '/home';
+      }
+
+      return null;
+    },
     routes: [
       GoRoute(
           path: '/login',
