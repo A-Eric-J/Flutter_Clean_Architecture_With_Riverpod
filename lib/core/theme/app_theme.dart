@@ -6,8 +6,8 @@ class AppTheme {
 
   static double _resolveFontSize(double fontSize) {
     double scale = 1.0;
-    if (ScreenUtil().screenWidth > 600) scale = 0.8; // tablets
-    if (ScreenUtil().screenWidth > 1000) scale = 0.7; // desktop
+    if (ScreenUtil().screenWidth > 600) scale = 0.8; // tablets scale
+    if (ScreenUtil().screenWidth > 1000) scale = 0.7; // desktop scale
     return (fontSize * scale).sp;
   }
 
