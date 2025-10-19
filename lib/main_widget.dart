@@ -18,17 +18,15 @@ class MainWidget extends ConsumerWidget {
 /// If you see the sizes of the texts are big, it is because of the theme and size and you should
     /// refactor it based on your needs
     return ScreenUtilInit(
-            // designSize: const Size(390, 844),
+            designSize: const Size(390, 844),
     builder: (context,child){
         return
-          Responsive(
-            mobile: MaterialApp.router(
-                  routerConfig: goRouter,
-                      debugShowCheckedModeBanner: true,
-                      theme: AppTheme.lightTheme,
-                      darkTheme: AppTheme.darkTheme,
-                      themeMode: themeMode,
-                ),
+          MaterialApp.router(
+            routerConfig: goRouter,
+            debugShowCheckedModeBanner: true,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeMode,
           );
       },
     );
@@ -37,43 +35,8 @@ class MainWidget extends ConsumerWidget {
     //   routerConfig: goRouter,
     //   debugShowCheckedModeBanner: true,
     // );
+
+
   }
 }
 
-
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await HiveHelper.init();
-//
-//   runApp(const ProviderScope(child: MyApp()));
-// }
-//
-// class MyApp extends ConsumerWidget {
-//   const MyApp({super.key});
-//
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final themeMode = ref.watch(themeControllerProvider);
-//
-//     return ScreenUtilInit(
-//       designSize: const Size(390, 844),
-//       builder: (context, child) {
-//         return MaterialApp(
-//           debugShowCheckedModeBanner: false,
-//           theme: AppTheme.lightTheme,
-//           darkTheme: AppTheme.darkTheme,
-//           themeMode: themeMode,
-//           home: Scaffold(
-//             appBar: AppBar(title: const Text("Base App")),
-//             body: Center(
-//               child: ElevatedButton(
-//                 onPressed: () => ref.read(themeControllerProvider.notifier).toggleTheme(),
-//                 child: const Text("Toggle Theme"),
-//               ),
-//             ),
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }

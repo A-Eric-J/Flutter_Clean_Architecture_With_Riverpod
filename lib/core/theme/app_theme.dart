@@ -3,45 +3,47 @@ import 'package:flutter_clean_architecture_with_riverpod/common/style/colors.dar
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTheme {
+
   static double _resolveFontSize(double fontSize) {
-    // Ensures font sizes adapt responsively
-    return ScreenUtil().setSp(fontSize * 16);
+    double scale = 1.0;
+    if (ScreenUtil().screenWidth > 600) scale = 0.8; // tablets
+    if (ScreenUtil().screenWidth > 1000) scale = 0.7; // desktop
+    return (fontSize * scale).sp;
   }
 
-  static TextTheme _textTheme(Color color) {
-    return TextTheme(
-      displayLarge: TextStyle(
-          fontSize: _resolveFontSize(2.2),
-          color: color,
-          fontWeight: FontWeight.w600),
-      displayMedium: TextStyle(
-          fontSize: _resolveFontSize(1.9),
-          color: color,
-          fontWeight: FontWeight.w500),
-      displaySmall: TextStyle(
-          fontSize: _resolveFontSize(1.7),
-          color: color,
-          fontWeight: FontWeight.w500),
-      bodyLarge: TextStyle(
-          fontSize: _resolveFontSize(1.2),
-          color: color,
-          fontWeight: FontWeight.w400),
-      bodyMedium: TextStyle(
-          fontSize: _resolveFontSize(1.1),
-          color: color,
-          fontWeight: FontWeight.w400),
-      bodySmall: TextStyle(
-          fontSize: _resolveFontSize(1.0),
-          color: color,
-          fontWeight: FontWeight.w400),
-      titleLarge: TextStyle(
-          fontSize: _resolveFontSize(1.3),
-          color: color,
-          fontWeight: FontWeight.w500),
-    );
-  }
 
-  static ThemeData lightTheme = ThemeData(
+  static TextTheme _textTheme(Color color) => TextTheme(
+    displayLarge: TextStyle(
+        fontSize: _resolveFontSize(22),
+        color: color,
+        fontWeight: FontWeight.w600),
+    displayMedium: TextStyle(
+        fontSize: _resolveFontSize(19),
+        color: color,
+        fontWeight: FontWeight.w500),
+    displaySmall: TextStyle(
+        fontSize: _resolveFontSize(17),
+        color: color,
+        fontWeight: FontWeight.w500),
+    bodyLarge: TextStyle(
+        fontSize: _resolveFontSize(14),
+        color: color,
+        fontWeight: FontWeight.w400),
+    bodyMedium: TextStyle(
+        fontSize: _resolveFontSize(13),
+        color: color,
+        fontWeight: FontWeight.w400),
+    bodySmall: TextStyle(
+        fontSize: _resolveFontSize(12),
+        color: color,
+        fontWeight: FontWeight.w400),
+    titleLarge: TextStyle(
+        fontSize: _resolveFontSize(15),
+        color: color,
+        fontWeight: FontWeight.w500),
+  );
+
+  static ThemeData get lightTheme => ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.whiteColor,
     primaryColor: AppColors.pri40,
@@ -63,7 +65,7 @@ class AppTheme {
     ),
   );
 
-  static ThemeData darkTheme = ThemeData(
+  static ThemeData get darkTheme => ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.priBGdark,
     primaryColor: AppColors.secondaryColor,
@@ -85,3 +87,4 @@ class AppTheme {
     ),
   );
 }
+

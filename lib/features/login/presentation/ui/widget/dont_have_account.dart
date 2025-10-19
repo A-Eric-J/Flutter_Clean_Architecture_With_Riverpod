@@ -8,20 +8,38 @@ class DontHaveAccount extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Column(
       children: [
-        Text(
-          "Don't have an account?".hardcoded,
-        ),
-        TextButton(
-          onPressed: () {
-            // Navigate to signup screen
-            context.push('/signup');
-          },
-          child: Text(
-            "Sign up".hardcoded,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Spacer(),
+            Expanded(
+              flex: 2,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "Don't have an account?".hardcoded,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton(
+                  onPressed: () {
+                    // Navigate to signup screen
+                    context.push('/signup');
+                  },
+                  child: Text(
+                    "Sign up".hardcoded,
+                  ),
+                ),
+              ),
+            ),
+            Spacer(),
+          ],
         ),
       ],
     );
